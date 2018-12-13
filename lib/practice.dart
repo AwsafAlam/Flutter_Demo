@@ -1,15 +1,24 @@
+import 'dart:math';
 
-class Bicycle {
-  int wheel;
-  int speed;
-  int gear;
-
-  Bicycle(this.wheel, this.speed, this.gear); // equivalent to adding all the others separately
+abstract class Shape {
+  num get area;
 }
 
-main(List<String> args) {
-  
-  var bike = new Bicycle(2, 0, 1);
-  print(bike.gear); 
+class Circle implements Shape {
+  final num radius;
+  Circle(this.radius);
+  num get area => pi * pow(radius, 2);
+}
 
+class Square implements Shape {
+  final num side;
+  Square(this.side);
+  num get area => pow(side, 2);
+}
+
+main() {
+  final circle = Circle(2);
+  final square = Square(2);
+  print(circle.area);
+  print(square.area);
 }

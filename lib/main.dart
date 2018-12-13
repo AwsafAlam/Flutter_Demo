@@ -1,4 +1,4 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 // void main() => runApp(MyApp());
 
@@ -110,16 +110,26 @@
 //   }
 // }
 
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     home: MyHomePage(),
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
       home: MyHomePage(),
     );
   }
@@ -130,10 +140,22 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+  
   TabController controller;
+  int _counter = 0;
 
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+      print('Counter: $_counter');
+    });
+  }
   int getColorHexFromStr(String colorStr) {
     colorStr = "FF" + colorStr;
     colorStr = colorStr.replaceAll("#", "");
@@ -245,7 +267,7 @@ class _MyHomePageState extends State<MyHomePage>
                       Padding(
                         padding: EdgeInsets.only(left: 15.0),
                         child: Text(
-                          'Hello , Pino',
+                          'Hello , Awsaf',
                           style: TextStyle(
                               fontFamily: 'Quicksand',
                               fontSize: 30.0,
@@ -390,15 +412,39 @@ class _MyHomePageState extends State<MyHomePage>
           controller: controller,
           indicatorColor: Colors.yellow,
           tabs: <Widget>[
-            Tab(
-              icon: Icon(Icons.event_seat, color: Colors.yellow)
+            GestureDetector(
+              onTap: (){
+                print("Hello");
+              },
+              child: Tab(icon: Icon(Icons.event_seat, color: Colors.yellow)),
             ),
-            Tab(icon: Icon(Icons.timer, color: Colors.grey)),
-            Tab(icon: Icon(Icons.shopping_cart, color: Colors.grey)),
+            GestureDetector(
+              onTap: (){
+                print("Hello");
+              },
+              child: Tab(icon: Icon(Icons.timer, color: Colors.grey)),
+            ),
+            GestureDetector(
+              onTap: (){
+                print("Hello");
+              },
+              child: Tab(icon: Icon(Icons.shopping_cart, color: Colors.grey)),
+            ),
+            GestureDetector(
+              onTap: (){
+                print("Hello");
+              },
+              child: Tab(icon: Icon(Icons.event_seat, color: Colors.yellow)),
+            ),
             Tab(icon: Icon(Icons.person_outline, color: Colors.grey))
           ],
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: Icon(Icons.add),
+      // ),
     );
   }
 
@@ -448,6 +494,7 @@ class _MyHomePageState extends State<MyHomePage>
                               : Icon(Icons.favorite, color: Colors.red),
                         ),
                       ),
+                      // onPressed: print('helo'),
                     )
                   ],
                 ),
