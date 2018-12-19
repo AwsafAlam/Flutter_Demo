@@ -35,8 +35,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
-
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.amber,
       ),
       home: new LoginPage(),
     );
