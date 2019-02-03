@@ -90,13 +90,13 @@ class _LoginPageState extends State<LoginPage>
                         onPageChanged: (i) {
                           if (i == 0) {
                             setState(() {
-                              right = Colors.white;
+                              right = Colors.black;
                               left = Colors.black;
                             });
                           } else if (i == 1) {
                             setState(() {
                               right = Colors.black;
-                              left = Colors.white;
+                              left = Colors.black;
                             });
                           }
                         },
