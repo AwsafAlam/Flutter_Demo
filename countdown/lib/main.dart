@@ -1,5 +1,5 @@
-/*
 import 'package:flutter/material.dart';
+import 'countdown/countdown.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,18 +10,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: CountdownScreen(),
     );
   }
 }
@@ -110,39 +101,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-=======================================
-*/
-import 'dart:async';
-
-import 'package:flutter_crashlytics/flutter_crashlytics.dart';
-import 'package:audioplayers/audio_cache.dart';
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'configuration.dart';
-import 'numcol.dart';
-import 'middleware/index.dart';
-import 'domain/index.dart';
-import 'view/index.dart';
-
-void main() async {
-  final sharedPreferences = await SharedPreferences.getInstance();
-  var isDebugMode = false;
-  assert(() {
-    isDebugMode = true;
-    return true;
-  }());
-
-  FlutterError.onError = (FlutterErrorDetails details) {
-    if (isDebugMode) {
-      FlutterError.dumpErrorToConsole(details);
-    } else {
-      Zone.current.handleUncaughtError(details.exception, details.stack);
-    }
-  };
-
-  await FlutterCrashlytics().initialize();
-
-  
-}
-
